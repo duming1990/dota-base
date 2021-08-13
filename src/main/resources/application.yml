@@ -1,0 +1,54 @@
+server:
+  servlet:
+    context-path: /
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/music-manager?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+
+  redis:
+    database: 0
+    password: 123456 #密码
+    timeout: 3000
+    mode: single
+    host: localhost
+    #host: 118.178.187.172
+    port: 6379
+    pool:
+      max-active: 1000 #\u6700\u5927\u8FDE\u63A5\u6570
+      max-idle: 10 #\u6700\u5927\u7A7A\u95F2\u8FDE\u63A5\u6570
+      max-wait: -1 #\u6700\u5927\u7B49\u5F85\u65F6\u95F4
+      min-idle: 1
+      conn-timeout: 3000
+      so-timeout: 3000
+      size: 1000
+      testOnBorrow: true
+      testWhileIdle: true
+    single:
+      address: localhost:6379
+    #cluster:
+    #    scan-interval: 1000
+    #    nodes:
+    #    read-mode: SLAVE
+    #    retry-attempts: 3
+    #    failed-attempts: 3
+    #    slave-connection-pool-size: 64
+    #    master-connection-pool-size: 64
+    #    retry-interval: 1500
+    #sentinel:
+    #    master: business-master
+    #    nodes:
+    #    master-onlyWrite: true
+    #    fail-max: 3
+
+# Logger Config
+logging:
+  level:
+    com.dota: debug
+
+  file:
+    path: /my.log
